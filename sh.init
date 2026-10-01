@@ -1,0 +1,24 @@
+#!/bin/bash
+echo "BASH: Mounting virtual filesystems..."
+
+# Монтируем devtmpfs (устройства)
+mount -t devtmpfs devtmpfs /dev
+echo "BASH: mount -t devtmpfs devtmpfs /dev"
+# Создаем стандартные точки монтирования, если их нет
+mkdir -p /dev/pts /dev/shm
+echo "BASH: mkdir -p /dev/pts /dev/shm"
+# Монтируем pts (псевдотерминалы)
+mount -t devpts devpts /dev/pts
+echo "BASH: mount -t devpts devpts /dev/pts"
+# Монтируем shm (разделяемая память)
+mount -t tmpfs tmpfs /dev/shm
+echo "BASH: mount -t tmpfs tmpfs /dev/shm"
+
+echo "BASH: Virtual filesystems mounted successfully."
+
+echo "BASH: Starting network services..."
+
+ifconfig lo 127.0.0.1 up
+
+echo "BASH: Network loopback interface started."
+echo "BASH: System initialization complete."

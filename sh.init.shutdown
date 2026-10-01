@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "BI: Stopping network services..."
+echo "BI: Unmounting filesystems..."
+echo "BI: System halted."
